@@ -1,11 +1,17 @@
 import React from 'react';
+import Form from './form';
+import PropTypes from 'prop-types';
 
-function GetScouted(){
+function GetScouted(props){
   return(
     <div>
-      <h3>GetScouted</h3>
+      <Form onNewActorCreation={props.onNewActorCreation}/>
     </div>
   );
 }
+
+GetScouted.propTypes = {
+  onNewActorCreation: PropTypes.func
+};
 
 export default GetScouted;

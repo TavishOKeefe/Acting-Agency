@@ -58,7 +58,7 @@ function Women(){
           height={woman.height}
           weight={woman.weight}
           skills={woman.skills}
-          id={woman.id}
+          key={woman.id}
         />
       )}
     </div>

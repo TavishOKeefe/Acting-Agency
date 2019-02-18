@@ -49,16 +49,16 @@ function Men(){
   return(
     <div>
       <h3>Men</h3>
-        {mensList.map((man) =>
-          <Profile
-            name={man.name}
-            age={man.age}
-            height={man.height}
-            weight={man.weight}
-            skills={man.skills}
-            id={man.id}
-            />
-        )}
+      {mensList.map((man) =>
+        <Profile
+          name={man.name}
+          age={man.age}
+          height={man.height}
+          weight={man.weight}
+          skills={man.skills}
+          key={man.id}
+        />
+      )}
     </div>
   );
 }

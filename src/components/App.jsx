@@ -7,53 +7,78 @@ import Home from './Home';
 import { Switch, Route } from 'react-router-dom';
 
 
+const appStyles = {
 
+  header: {
+    display: 'inline-block',
+    position: 'fixed',
+    background: 'red',
+    top: '0',
+    width: '100%',
+    float: 'left',
+    clear: 'both',
+    marginBottom: '80'
+  },
 
-function App(){
-  const appStyles = {
+  body: {
+    display: 'inline-block',
+    background: 'blue',
+    position: 'absolute',
+    float: 'left',
+    clear: 'both'
+  },
 
-    header: {
-      position: 'fixed',
-      background: 'red',
-      top: '0'
-    },
-
-    body: {
-      height: '500px',
-      width: '500px',
-      background: 'blue',
-      position: 'absolute',
-      clear: 'both'
-    },
-
-    footer: {
-      position: 'fixed',
-      bottom: '0',
-      background: 'green'
-    }
-
+  footer: {
+    display: 'inline-block',
+    position: 'fixed',
+    bottom: '0',
+    background: 'green',
+    width: '100%',
+    float: 'left',
+    clear: 'both'
   }
 
-  return (
-    <div>
-      <div style={appStyles.header}>
-        <Header/>
-      </div>
+};
 
-      <div style={appStyles.body}>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/actors' component={Actors} />
-          <Route exact path='/get-scouted' component={GetScouted} />
-        </Switch>
-      </div>
 
-      <div style={appStyles.footer}>
-        <Footer/>
-      </div>
+class App extends React.Component {
 
-    </div>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterActorList: []
+    };
+    this.handleAddingNewActorToList = this.handleAddingNewActorToList.bind(this);
+  }
+
+  handleAddingNewActorToList(newActor){
+    var newMasterActorList = this.state.masterActorList.slice();
+    newMasterActorList.push(newActor);
+    this.setState({masterActorList: newMasterActorList});
+  }
+
+  render(){
+    return (
+      <div>
+        <div>
+          <Header/>
+        </div>
+
+        <div>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/actors' render={()=><Actors actorList={this.state.masterActorList} />} />
+            <Route exact path='/get-scouted' render={()=><GetScouted onNewActorCreation={this.handleAddingNewActorToList} />}/>
+          </Switch>
+        </div>
+
+        <div style={appStyles.footer}>
+          <Footer/>
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default App;
