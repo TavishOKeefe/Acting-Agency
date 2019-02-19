@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 function Actors(props){
   return(
     <div>
-      <h3>Actors</h3>
+      <h2>Actors</h2>
       <Men/>
       <Women/>
       <NewFaces actorList={props.actorList}/>
