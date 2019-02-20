@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -37,21 +36,21 @@ const cardStyle = theme => ({
 class Profile extends React.Component {
 
   constructor(props) {
-   super(props);
-   this.state = {
-     expanded: false
-   };
-   this.handleExpandClick =
+    super(props);
+    this.state = {
+      expanded: false
+    };
+    this.handleExpandClick =
    this.handleExpandClick.bind(this);
- }
+  }
 
- handleExpandClick(){
-   if (this.state.expanded === false){
-     this.setState({expanded: true});
-   } else {
-     this.setState({expanded: false});
-   }
- }
+  handleExpandClick(){
+    if (this.state.expanded === false){
+      this.setState({expanded: true});
+    } else {
+      this.setState({expanded: false});
+    }
+  }
 
   render() {
     const classes = this.props;
@@ -62,9 +61,9 @@ class Profile extends React.Component {
           <Typography variant="display1" align="left">{this.props.name}</Typography>
           <CardActions>
             <IconButton className={classnames(classes.expand, {[classes.expandOpen]: this.state.expanded,})}
-                onClick={this.handleExpandClick}
-                aria-expanded={this.state.expanded}>
-                <ExpandMoreIcon />
+              onClick={this.handleExpandClick}
+              aria-expanded={this.state.expanded}>
+              <ExpandMoreIcon />
             </IconButton>
           </CardActions>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
