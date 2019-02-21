@@ -7,8 +7,7 @@ function Header(){
     textAlign: 'left'
 
   };
-
-
+  
   return(
     <div>
       <h1> OH-K Agency</h1>

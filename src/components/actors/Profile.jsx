@@ -73,6 +73,7 @@ class Profile extends React.Component {
                 <li>Height: {this.props.height}</li>
                 <li>Weight: {this.props.weight}</li>
                 <li>Skills: {this.props.skills}</li>
+                <li>Likes: {this.props.likes}</li>
               </ul>
 
             </CardContent>
@@ -90,7 +91,8 @@ Profile.propTypes = {
   age:  PropTypes.string,
   height:  PropTypes.string,
   weight: PropTypes.string,
-  skills:  PropTypes.string
+  skills:  PropTypes.string,
+  likes: PropTypes.number
 };
 
 export default withStyles(cardStyle)(Profile);

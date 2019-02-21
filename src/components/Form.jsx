@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 function Form(props) {
   let _name = null;
@@ -10,7 +11,7 @@ function Form(props) {
 
   function handleNewFormSubmission(event) {
     event.preventDefault();
-    props.onNewActorCreation({name: _name.value, age: _age.value, height: _height.value, weight: _weight.value, skills: _skills.value});
+    props.onNewActorCreation({name: _name.value, age: _age.value, height: _height.value, weight: _weight.value, skills: _skills.value, likes: 0, id: v4()});
     _name.value = '';
     _age.value = '';
     _height.value = '';

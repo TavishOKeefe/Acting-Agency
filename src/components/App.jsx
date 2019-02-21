@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import Footer from './Footer';
+
 import Actors from './actors/Actors';
 import GetScouted from './GetScouted';
 import Home from './Home';
@@ -49,12 +49,37 @@ class App extends React.Component {
       masterActorList: []
     };
     this.handleAddingNewActorToList = this.handleAddingNewActorToList.bind(this);
+    this.onHandleLikePost = this.onHandleLikePost.bind(this);
+    this.onHandleDisLikedPost = this.onHandleDisLikedPost.bind(this);
   }
 
   handleAddingNewActorToList(newActor){
     var newMasterActorList = this.state.masterActorList.slice();
     newMasterActorList.push(newActor);
     this.setState({masterActorList: newMasterActorList});
+  }
+
+  onHandleLikePost(id){
+    let actors = this.state.masterActorList.slice();
+    actors.forEach(function(actor){
+      if (id === actor.id) {
+
+        actor.likes += 1;
+
+      }
+    });
+    this.setState({masterActorList: actors});
+  }
+  onHandleDisLikedPost(id){
+    let actors = this.state.masterActorList.slice();
+    actors.forEach(function(actor){
+      if (id === actor.id) {
+
+        actor.likes -= 1;
+
+      }
+    });
+    this.setState({masterActorList: actors});
   }
 
   render(){
@@ -67,13 +92,13 @@ class App extends React.Component {
         <div>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/actors' render={()=><Actors actorList={this.state.masterActorList} />} />
+            <Route exact path='/actors' render={()=><Actors actorList={this.state.masterActorList} disLikePost={this.onHandleDisLikedPost} likePost={this.onHandleLikePost} />} />
             <Route exact path='/get-scouted' render={()=><GetScouted onNewActorCreation={this.handleAddingNewActorToList} />}/>
           </Switch>
         </div>
 
         <div style={appStyles.footer}>
-          <Footer/>
+
         </div>
 
       </div>
