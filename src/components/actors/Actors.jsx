@@ -10,7 +10,7 @@ function Actors(props){
   return(
     <div>
       <h2>Actors</h2>
-      <Men likePost={props.likePost} disLikePost={props.disLikePost}/>
+      <Men/>
       <Women />
       <NewFaces actorList={props.actorList} likePost={props.likePost} disLikePost={props.disLikePost}/>
     </div>
